@@ -4,8 +4,18 @@ public class Calculator {
 
     private int a;
     private int b;
+    private NumberCreator numberCreator;
+    private int baseNum = 10;
 
     public Calculator() {}
+    public Calculator(NumberCreator numberCreator) {
+        this.numberCreator = numberCreator;
+    }
+
+    public Calculator(NumberCreator numberCreator, int baseNum) {
+        this.numberCreator = numberCreator;
+        this.baseNum = baseNum;
+    }
 
     public Calculator(int a, int b) {
         this.a = a;
@@ -17,19 +27,22 @@ public class Calculator {
     더하기 빼기 곱하기 나누기
      */
 
-    public int add() {
-        return a + b;
+    public void plus (int num) {
+        int left = num;
+        int right = numberCreator.generateNumber(baseNum);
+        int result = left + right;
+        System.out.println(left + " + " + right + " = " + result);
     }
-
-    public int subtract() {
-        return a - b;
+    public void minus (int num) {
+        int left = num;
+        int right = numberCreator.generateNumber(baseNum);
+        int result = left - right;
+        System.out.println(left + " - " + right + " = " + result);
     }
-
-    public int multiply() {
-        return a * b;
-    }
-
-    public double divide() {
-        return (double) a / (double) b;
+    public void multiple (int num) {
+        int left = num;
+        int right = numberCreator.generateNumber(baseNum);
+        int result = left * right;
+        System.out.println(left + " x " + right + " = " + result);
     }
 }
