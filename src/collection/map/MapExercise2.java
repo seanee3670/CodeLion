@@ -1,5 +1,7 @@
 package collection.map;
 
+import java.util.HashMap;
+
 public class MapExercise2 {
 
     public static void main(String[] args) {
@@ -10,23 +12,27 @@ public class MapExercise2 {
         String s = "a2f39S8h^f2l";
         int cnt = 0;
 
+        HashMap<Character, Integer> map = new HashMap<>();
+
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
 
             if (isAlphabet(ch)) {
-                cnt++;
+                if (map.containsKey(ch)) {
+                    map.put(ch, map.get(ch) + 1);
+                }
+                else if (!map.containsKey(ch)) {
+                    map.put(ch, 1);
+                }
             }
         }
 
-        System.out.println(cnt);
+        System.out.println(map);
 
     }
 
     static boolean isAlphabet(char ch) {
-        if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ) {
-            return true;
-        }
-
-        return false;
+        return ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') );
     }
+
 }
