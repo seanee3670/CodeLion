@@ -1,16 +1,23 @@
 package java_1007;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PopulationStatistics {
+
+    public void createFile(String filename) throws IOException {
+        File file = new File(filename);
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public PopulationMove parse(String data) {
         // 파일에서 읽어온다.
@@ -36,19 +43,24 @@ public class PopulationStatistics {
         }
     }
 
-    public void readFileByLine(String filename) throws IOException {
-        // BufferReader 는 삽으로 모래를 뜨는 느낌
-        BufferedReader reader = new BufferedReader(
+    public List<PopulationMove> readFileByLine(String filename) throws IOException {
+
+        List<PopulationMove> result = new ArrayList<>();
+                // BufferReader 는 삽으로 모래를 뜨는 느낌
+                BufferedReader reader = new BufferedReader(
                 new FileReader(filename)
         );
 
         String str;
         while ((str = reader.readLine()) != null) {
             System.out.println(str);
+//            PopulationMove pm = parse(str);
         }
         reader.close();
 
+        return result;
     }
+
 
     public void readFileByLine2(String filename) throws IOException {
         try(BufferedReader br = Files.newBufferedReader(
@@ -66,8 +78,16 @@ public class PopulationStatistics {
     public static void main(String[] args) throws IOException {
         String address = "//C:\\Users\\Chris\\Downloads\\2021_인구관련연간자료_20220927_66125.csv";
         PopulationStatistics populationStatistics = new PopulationStatistics();
-        // read 메소드 실행까지 파일을 읽어오지 않음
+//        List<PopulationMove> pml = populationStatistics.readFileByLine(address);
+//
+//        System.out.println(pml.size());
+//        // read 메소드 실행까지 파일을 읽어오지 않음
+//
+//        for (PopulationMove pm : pml) {
+//            System.out.printf("전입: %s, 전출: %s\n", pm.getFromSido(), pm.getToSido());
+//        }
 
+        populationStatistics.createFile("./from_to.txt");
 
 
 
