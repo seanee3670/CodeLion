@@ -10,6 +10,24 @@ import java.util.List;
 
 public class PopulationStatistics {
 
+    public String fromToString(PopulationMove populationMove) {
+        return populationMove.getFromSido() + "," + populationMove.getToSido() + "\n";
+    }
+
+    public void write(List<String> strs, String filename) {
+        File file = new File(filename);
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            for (String str : strs) {
+                writer.write(str);
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void createFile(String filename) throws IOException {
         File file = new File(filename);
         try {
@@ -21,11 +39,13 @@ public class PopulationStatistics {
 
     public PopulationMove parse(String data) {
         // 파일에서 읽어온다.
-        List<String> dataList = Arrays.asList(data.split(","));
+//        List<String> dataList = Arrays.asList(data.split(","));
+        String[] splittedLine = data.split(",");
 
-        // 시와 도를 변수에 담는다.
-        int fromSido = Integer.valueOf(dataList.get(6));
-        int toSido = Integer.valueOf(dataList.get(0));
+
+//         시와 도를 변수에 담는다.
+        int fromSido = Integer.valueOf(splittedLine[0]);
+        int toSido = Integer.valueOf(splittedLine[1]);
 
         // 담은 변수를 PopulationMove Constructor에 담는다
         return new PopulationMove(fromSido, toSido);
@@ -78,7 +98,7 @@ public class PopulationStatistics {
     public static void main(String[] args) throws IOException {
         String address = "//C:\\Users\\Chris\\Downloads\\2021_인구관련연간자료_20220927_66125.csv";
         PopulationStatistics populationStatistics = new PopulationStatistics();
-//        List<PopulationMove> pml = populationStatistics.readFileByLine(address);
+        List<PopulationMove> pml = populationStatistics.readFileByLine(address);
 //
 //        System.out.println(pml.size());
 //        // read 메소드 실행까지 파일을 읽어오지 않음
@@ -87,8 +107,15 @@ public class PopulationStatistics {
 //            System.out.printf("전입: %s, 전출: %s\n", pm.getFromSido(), pm.getToSido());
 //        }
 
-        populationStatistics.createFile("./from_to.txt");
+//        populationStatistics.createFile("./from_to.txt");
 
+        // from_to.txt 파일에 쓰기
+//        List<String> strings = new ArrayList<>();
+//        for (PopulationMove pm : pml) {
+//            String fromTo = populationStatistics.fromToString(pm);
+//            strings.add(fromTo);
+//        }
+//        populationStatistics.write(strings, "./from_to.txt");
 
 
 
