@@ -17,8 +17,8 @@ public class PopulationStatistics {
         List<String> dataList = Arrays.asList(data.split(","));
 
         // 시와 도를 변수에 담는다.
-        int fromSido = Integer.valueOf(dataList.get(0));
-        int toSido = Integer.valueOf(dataList.get(6));
+        int fromSido = Integer.valueOf(dataList.get(6));
+        int toSido = Integer.valueOf(dataList.get(0));
 
         // 담은 변수를 PopulationMove Constructor에 담는다
         return new PopulationMove(fromSido, toSido);
