@@ -31,8 +31,8 @@ public class InsertionSort {
     public static void main(String[] args) {
         int[] arr = {8, 5, 6, 2, 4};
 
-        swap(arr, 0, 1);
-//        insertionSort(arr);
+//        swap(arr, 0, 1);
+        insertionSort(arr);
 
         System.out.println(Arrays.toString(arr));
     }
