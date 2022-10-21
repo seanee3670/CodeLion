@@ -24,7 +24,7 @@ public class BubbleSort {
         bubbleSort(arr.length, arr);
 
         for (int e : arr) {
-            System.out.println("e = " + e);
+            System.out.println("asdfw = " + e);
         }
 
     }
