@@ -4,10 +4,6 @@ public class Brackets {
     public boolean Solution(String s) {
         Stack<Character> stack = new Stack<Character>();
 
-        if (s.charAt(0) == ')') {
-            return false;
-        }
-
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
 
@@ -15,6 +11,9 @@ public class Brackets {
                 stack.push(ch);
             }
             else if (ch == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
                 stack.pop();
             }
 
