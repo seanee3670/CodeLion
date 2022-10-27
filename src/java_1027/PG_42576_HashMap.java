@@ -7,7 +7,7 @@ public class PG_42576_HashMap {
         HashMap<String, Integer> map = new HashMap<>();
 
         // answer 초기화
-        String answer = participants[0];
+        String answer = "";
 
         // 참가 인원을 map에 담고, 중복된 인원은 value + 1을 해준다
         for (String participant : participants) {
