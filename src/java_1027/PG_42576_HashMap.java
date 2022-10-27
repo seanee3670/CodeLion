@@ -11,16 +11,20 @@ public class PG_42576_HashMap {
 
         // 참가 인원을 map에 담고, 중복된 인원은 value + 1을 해준다
         for (String participant : participants) {
-            if (map.containsKey(participant)) {
-                int value = map.get(participant);
+            map.put(participant, map.getOrDefault(participant, 0) + 1);
 
-                map.put(participant, value + 1);
-            } else {
-            map.put(participant, 1);
-            }
+            // getOrDefault 와 같은 내용
+//            if (map.containsKey(participant)) {
+//                int value = map.get(participant);
+//
+//                map.put(participant, value + 1);
+//            } else {
+//            map.put(participant, 1);
+//            }
+
         }
 
-        // particiants 와 completions 매칭 체크: completions 요소대로 map.get() 을 하여 해당 value 를 1 씩 뺀다
+        // participants 와 completions 매칭 체크: completions 요소대로 map.get() 을 하여 해당 value 를 1 씩 뺀다
         for (String completedParticipant : completions) {
             if (map.containsKey(completedParticipant)) {
                 int value = map.get(completedParticipant);
