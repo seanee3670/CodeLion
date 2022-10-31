@@ -14,13 +14,13 @@ public class PRG_42840 {
         int[] scores = new int[3];
 
         for (int i = 0; i < answers.length; i++) {
-            if (isFirstSupojaAnswer(i, answers[i])) {
+            if (isSupojaAnswer1(i, answers[i])) {
                 scores[0]++;
             }
-            if (isSecondSupojaAnswer(i, answers[i])) {
+            if (isSupojaAnswer2(i, answers[i])) {
                 scores[1]++;
             }
-            if (isThirdSupojaAnswer(i, answers[i])) {
+            if (isSupojaAnswer3(i, answers[i])) {
                 scores[2]++;
             }
         }
@@ -45,15 +45,14 @@ public class PRG_42840 {
     }
 
 
-    static boolean isFirstSupojaAnswer(int idx, int answer) {
+    static boolean isSupojaAnswer1(int idx, int answer) {
         if (idx % 5 + 1 == answer) {
             return true;
         }
         return false;
     }
 
-    static boolean isSecondSupojaAnswer(int idx, int answer) {
-
+    static boolean isSupojaAnswer2(int idx, int answer) {
         int supojaAnswer = 0;
         int remainder = idx % 8;
 
@@ -73,7 +72,7 @@ public class PRG_42840 {
         return supojaAnswer == answer ? true : false;
     }
 
-    static boolean isThirdSupojaAnswer(int idx, int answer) {
+    static boolean isSupojaAnswer3(int idx, int answer) {
         int supojaAnswer = 0;
         int remainder = idx % 10;
 
