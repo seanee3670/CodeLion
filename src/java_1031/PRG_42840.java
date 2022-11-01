@@ -34,7 +34,7 @@ public class PRG_42840 {
             }
         }
 
-//        return list.stream().mapToInt(i -> i).toArray(); // 테스트케이스 몇개 통과 하지 못함..
+//        return list.stream().mapToInt(i -> i.intValue()).toArray(); //
         int[] answer = new int[list.size()];
 
         for (int i = 0; i < list.size(); i++) {
